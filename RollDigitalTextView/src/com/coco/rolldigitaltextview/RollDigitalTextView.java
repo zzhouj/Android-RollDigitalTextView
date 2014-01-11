@@ -88,7 +88,10 @@ public class RollDigitalTextView extends TextView {
 	}
 
 	public void setDigitalType(int digitalType) {
-		mDigitalType = digitalType;
+		if (digitalType == DIGITAL_TYPE_INTEGER
+				|| digitalType == DIGITAL_TYPE_CURRENCY) {
+			mDigitalType = digitalType;
+		}
 	}
 
 	public long getRollingDuration() {
