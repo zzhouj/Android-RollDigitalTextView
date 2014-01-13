@@ -21,15 +21,39 @@
         android:orientation="vertical"
         android:padding="15dp" >
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rolling duration: " />
+
+            <TextView
+                android:id="@+id/rolling_duration_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/rolling_duration_seek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="5000" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:text="Digital to roll: " />
 
         <EditText
             android:id="@+id/digital_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="123456789" />
 
         <TextView
             android:layout_width="match_parent"
