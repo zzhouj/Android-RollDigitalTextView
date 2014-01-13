@@ -34,11 +34,11 @@ Usage
 
 2. Options settings:
 
-		// digital type (integer|currency)
+		// digital type (RollDigitalTextView.DIGITAL_TYPE_INTEGER|RollDigitalTextView.DIGITAL_TYPE_CURRENCY)
 		mRollDigitalTextView.setDigitalType(digitalType);
 
-		// rolling duration
-		mRollDigitalTextView.setRollingDuration(progress);
+		// rolling duration (min: 600ms)
+		mRollDigitalTextView.setRollingDuration(rollingDuration);
 
 		// start rolling increase
 		mRollDigitalTextView.startRolling(true);
