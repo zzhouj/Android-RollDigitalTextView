@@ -182,7 +182,7 @@ public class RollDigitalTextView extends TextView {
 			sb.insert(sb.length() - (i * 4 + 3), ',');
 		}
 		// point part
-		sb.append(String.format(".%02d", (int) (digital * 100) % 100));
+		sb.append(String.format(".%02d", (long) (digital * 100) % 100));
 		return sb.toString();
 	}
 
