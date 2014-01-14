@@ -36,7 +36,7 @@ import android.widget.TextView;
  */
 public class RollDigitalTextView extends TextView {
 	private static final String TAG = "RollDigitalTextView";
-	private static final boolean DEBUG = true;
+	private static final boolean DEBUG = false;
 
 	private static void DEBUG_LOG(String msg) {
 		if (DEBUG) {
