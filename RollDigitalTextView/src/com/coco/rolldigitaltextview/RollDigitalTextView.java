@@ -52,6 +52,8 @@ public class RollDigitalTextView extends TextView {
 	private static final int MIN_ROLLING_DURATION = 600; // ms
 	private static final int DEFAULT_ROLLING_DURATION = 2000; // ms
 
+	private static final int MAX_VALUE = 97;
+
 	// options
 	private int mDigitalType = DIGITAL_TYPE_INTEGER;
 	private long mRollingDuration = DEFAULT_ROLLING_DURATION;
@@ -132,10 +134,10 @@ public class RollDigitalTextView extends TextView {
 			int dx;
 			if (increase) {
 				sx = 0;
-				dx = 100;
+				dx = MAX_VALUE;
 			} else {
-				sx = 100;
-				dx = -100;
+				sx = MAX_VALUE;
+				dx = -MAX_VALUE;
 			}
 			mScroller.abortAnimation();
 			mScroller.startScroll(sx, 0, dx, 0, (int) (mRollingDuration));
@@ -147,8 +149,8 @@ public class RollDigitalTextView extends TextView {
 	public void computeScroll() {
 		if (mOriginalDigital > 0) {
 			if (!mScroller.isFinished() && mScroller.computeScrollOffset()) {
-				final int scrollX = Math.max(0, Math.min(100, Math.abs(mScroller.getCurrX())));
-				mCurrentDigital = (scrollX * mOriginalDigital) / 100;
+				final int scrollX = Math.max(0, Math.min(MAX_VALUE, Math.abs(mScroller.getCurrX())));
+				mCurrentDigital = scrollX * (mOriginalDigital / MAX_VALUE);
 				DEBUG_LOG("computeScroll mCurrentDigital=" + mCurrentDigital);
 				super.setText(formatDigital(mCurrentDigital), mOriginalTextType);
 
