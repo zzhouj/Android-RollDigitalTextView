@@ -24,6 +24,8 @@ package com.coco.rolldigitaltextview;
  */
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -62,6 +64,8 @@ public class RollDigitalTextView extends TextView {
 	// rolling
 	private double mCurrentDigital;
 	private Scroller mScroller;
+
+	private boolean mLastCompleteShown;
 
 	public RollDigitalTextView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
@@ -184,6 +188,33 @@ public class RollDigitalTextView extends TextView {
 		// point part
 		sb.append(String.format(".%02d", (long) (digital * 100) % 100));
 		return sb.toString();
+	}
+
+	@Override
+	protected void onDraw(Canvas canvas) {
+		super.onDraw(canvas);
+		final boolean isCompleteShown = isCompleteShown();
+		if (mLastCompleteShown != isCompleteShown) {
+			mLastCompleteShown = isCompleteShown;
+			post(new Runnable() {
+				@Override
+				public void run() {
+					startRolling(mLastCompleteShown);
+				}
+			});
+		}
+	}
+
+	private boolean isCompleteShown() {
+		if (isShown()) {
+			final Rect visibleRect = new Rect();
+			if (getLocalVisibleRect(visibleRect)
+					&& visibleRect.width() == getWidth()
+					&& visibleRect.height() == getHeight()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
