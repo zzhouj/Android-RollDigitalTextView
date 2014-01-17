@@ -8,6 +8,7 @@ Features
 
 + Android SDK **level 4+**.
 + Digital will rolling from 0 to actual value (increase), or vice versa (decrease).
++ Scroll up to rolling!
 + Options settings: digital type (integer|currency), rolling duration (ms).
 
 Snapshots
